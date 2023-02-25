@@ -1,13 +1,33 @@
 steps:
-- name: node
-  entrypoint: npm
-  args: ['install', 'express', '--save']
+# Docker Build Image
+  - name: gcr.io/cloud-builders/docker
+    id  : BUILD
+    args: ['build', '-t', '$_SERVICE_IMAGE', '.', '-f', 'Dockerfile']
 
-- name: build_and_deploy
-  entrypoint: npm
-  args: ['run', 'build']
-  timeout: 1800s
+# Docker Push Image to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    id  : PUSH
+    args: ['push', '$_SERVICE_IMAGE']
 
-- name: deploy
-  entrypoint: gcloud
-  args: ['app', 'deploy']
+# Docker Deploy image to Cloud Run
+  - name: gcr.io/cloud-builders/gcloud
+    id  : DEPLOY
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - --project=$_SERVICE_PROJECT
+      - --region=$_SERVICE_REGION
+      - --image=$_SERVICE_IMAGE
+
+images: # Display the image in the build results - Build Artifacts
+- $_SERVICE_IMAGE
+
+substitutions:
+    _SERVICE_IMAGE    : global (non-regional)-docker.pkg.dev/prod-378614/rebelsboss/gcp-js-app:tagname
+    _SERVICE_REGION   : global (non-regional)
+    _SERVICE_PROJECT  : PROD
+    _SERVICE_NAME     : my-prod
+    _DOCKER_REGISTRY  : rebelsboss
+    _DOCKER_IMAGENAME : gcp-js-app:tagname
