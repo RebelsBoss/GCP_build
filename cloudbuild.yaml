@@ -4,6 +4,10 @@ steps:
   args: ['install']
   
 - name: node
+  entrypoint: npm express
+  args: ['install']
+  
+- name: node
   entrypoint: npm
   args: ['run', 'build']
   
