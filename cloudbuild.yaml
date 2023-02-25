@@ -25,8 +25,7 @@ images: # Display the image in the build results - Build Artifacts
 - $_SERVICE_IMAGE
 
 substitutions:
-    _SERVICE_IMAGE    : global (non-regional)-docker.pkg.dev/prod-378614/rebelsboss/gcp-js-app:tagname
-    _SERVICE_REGION   : global (non-regional)
+    _SERVICE_IMAGE    : rebelsboss/gcp-js-app:tagname
     _SERVICE_PROJECT  : PROD
     _SERVICE_NAME     : my-prod
     _DOCKER_REGISTRY  : rebelsboss
