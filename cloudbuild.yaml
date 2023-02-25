@@ -2,7 +2,12 @@ steps:
 - name: node
   entrypoint: npm
   args: ['install', 'express', '--save']
-  
+
 - name: gcr.io/cloud-builders/gcloud
-  args: ['index.js', 'deploy']
+    id  : DEPLOY
+    args:
+      - run
+      - services
+      - update
+      
 timeout: 1800s
