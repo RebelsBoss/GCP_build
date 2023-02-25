@@ -4,13 +4,13 @@ steps:
   args: ['install', 'express', '--save']
 
 - name: 'node'
-    entrypoint: 'bash'
-    args: 
-      - '-c'
-      - |
-        echo $(cat package.json | sed 's/"test": "echo \\"Error: no test specified\\" && exit 1"/"start": "node index.js"/g') > package.json
-        npm install
-        npm run build
+  entrypoint: 'bash'
+  args: 
+    - '-c'
+    - |
+      echo $(cat package.json | sed 's/"test": "echo \\"Error: no test specified\\" && exit 1"/"start": "node index.js"/g') > package.json
+      npm install
+      npm run build
   
 - name: gcr.io/cloud-builders/gcloud
   args: ['app', 'deploy']
