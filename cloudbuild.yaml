@@ -1,11 +1,7 @@
 steps:
 - name: node
   entrypoint: npm
-  args: ['install']
-  
-- name: node
-  entrypoint: npm express
-  args: ['install']
+  args: ['install', 'express', '--save']
   
 - name: node
   entrypoint: npm
