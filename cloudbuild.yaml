@@ -13,7 +13,6 @@ steps:
       - update
       - $_SERVICE_NAME
       - --project=$_SERVICE_PROJECT
-      - --region=$_SERVICE_REGION
       - --image=$_SERVICE_IMAGE
 
 images: # Display the image in the build results - Build Artifacts
@@ -21,7 +20,5 @@ images: # Display the image in the build results - Build Artifacts
 
 substitutions:
     _SERVICE_IMAGE    : rebelsboss/gcp-js-app:tagname
-    _SERVICE_PROJECT  : PROD
+    _SERVICE_PROJECT  : prod-378614
     _SERVICE_NAME     : my-prod
-    _DOCKER_REGISTRY  : rebelsboss
-    _DOCKER_IMAGENAME : gcp-js-app:tagname
