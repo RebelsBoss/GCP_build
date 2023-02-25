@@ -1,0 +1,30 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    id  : BUILD
+    args: ['build', '-t', '$_SERVICE_IMAGE', '.', '-f', 'Dockerfile']
+
+  - name: gcr.io/cloud-builders/docker
+    id  : PUSH
+    args: ['push', '$_SERVICE_IMAGE']
+
+  - name: gcr.io/cloud-builders/gcloud
+    id  : DEPLOY
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - --project=$_SERVICE_PROJECT
+      - --region=$_SERVICE_REGION
+      - --image=$_SERVICE_IMAGE
+
+images: 
+- $_SERVICE_IMAGE
+
+substitutions:
+    _SERVICE_IMAGE    : europe-central2-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
+    _SERVICE_REGION   : europe-central2
+    _SERVICE_PROJECT  : PROD
+    _SERVICE_NAME     : my-docker-app-prod
+    _DOCKER_REGISTRY  : docker-repo
+    _DOCKER_IMAGENAME : myapp-prod
