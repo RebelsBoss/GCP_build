@@ -4,5 +4,5 @@ steps:
   args: ['install', 'express', '--save']
   
 - name: gcr.io/cloud-builders/gcloud
-  args: ['app', 'deploy']
+  args: ['index.js', 'deploy']
 timeout: 1800s
