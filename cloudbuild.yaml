@@ -3,7 +3,7 @@ steps:
   entrypoint: npm
   args: ['install', 'express', '--save']
 
-- name: modify package.json
+- name: modify_package.json
   entrypoint: 'bash'
   args: 
     - '-c'
@@ -11,7 +11,7 @@ steps:
       echo $(cat package.json | sed 's/"test": "echo \\"Error: no test specified\\" && exit 1"/"start": "node index.js"/g') > package.json
   id: modify-package
 
-- name: build and deploy
+- name: build_and_deploy
   entrypoint: npm
   args: ['run', 'build']
   timeout: 1800s
