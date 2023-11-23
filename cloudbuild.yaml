@@ -30,5 +30,5 @@ substitutions:
     _SERVICE_REGION   : europe-central2
     _SERVICE_PROJECT  : prod-378614
     _SERVICE_NAME     : my-prod
-    _DOCKER_REGISTRY  : rebelsboss1992/gcp-js-app
+    _DOCKER_REGISTRY  : gcp-js-app
     _DOCKER_IMAGENAME : gcp-js-app
