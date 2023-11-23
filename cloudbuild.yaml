@@ -26,5 +26,5 @@ substitutions:
     _SERVICE_REGION   : europe-central2
     _SERVICE_PROJECT  : prod-378614
     _SERVICE_NAME     : my-prod
-    _DOCKER_REGISTRY  : gcp-js-app
+    _DOCKER_REGISTRY  : europe-docker.pkg.dev/andrii-project-392608/gcp-js-app
     _DOCKER_IMAGENAME : rebelsboss1992/gcp-js-app
