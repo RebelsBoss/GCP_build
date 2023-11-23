@@ -11,7 +11,6 @@ steps:
     entrypoint: 'sh'
     args: ['push', '$_SERVICE_IMAGE']    
 
-    
 # Docker Deploy image to Cloud Run
   - name: gcr.io/cloud-builders/gcloud
     id  : DEPLOY
@@ -27,6 +26,8 @@ steps:
 
 options:
     logging: CLOUD_LOGGING_ONLY
+
+
 
 substitutions:
     _SERVICE_IMAGE    : europe-central2-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
