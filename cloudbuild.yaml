@@ -27,4 +27,4 @@ substitutions:
     _SERVICE_PROJECT  : prod-378614
     _SERVICE_NAME     : my-prod
     _DOCKER_REGISTRY  : gcp-js-app
-    _DOCKER_IMAGENAME : rebelsboss/gcp-js-app
+    _DOCKER_IMAGENAME : rebelsboss1992/gcp-js-app
