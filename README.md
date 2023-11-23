@@ -11,7 +11,7 @@
  - Google Artifact Registry
  - Google Cloud Run 
 
-#### Install.
+#### Для локального тестування
  1. Клонуйте репозиторій на свій локальний комп'ютер:
 
 ```
@@ -25,8 +25,7 @@
      - docker install
 ```
 
- 4. Start app.
- Для запуску додатку локально, виконайте наступні команди:
+ 4. Для запуску додатку локально, виконайте наступні команди:
 
  ```
      - docker build -t node:alpine -f dockerfile .
@@ -40,11 +39,11 @@
 Цей проект використовує Google Cloud Build для автоматичної збірки додатку після кожного коміту до репозиторію. Файл cloudbuild.yaml визначає кроки, необхідні для збірки додатку.
 
 #### Continuous Deployment.
-Після успішної збірки додатку в Google Cloud Build, проект автоматично розгортається на Google Kubernetes Engine (GKE).
+Після успішної збірки додатку в Google Cloud Build та пушу до Artifact Registry, отриманий артефакт автоматично розгортається на Google Cloud Run безсерверному середовищі.
 
 #### Google Cloud Platform.
 Цей проект використовує наступні сервіси Google Cloud Platform:
   - Google Cloud Build для автоматичної збірки додатку.
-  - Google Cloud SDK
   - Google Artifact Registry
-  - Google Cloud Run 
+  - Google Cloud Run
+  - Google IAM
