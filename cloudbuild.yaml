@@ -28,6 +28,8 @@ substitutions:
     _SERVICE_IMAGE    : europe-central2-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
     _SERVICE_REGION   : europe-central2
     _SERVICE_PROJECT  : prod-378614
-    _SERVICE_NAME     : my-prod
-    _DOCKER_REGISTRY  : cloud-run-source-deploy
+# Name CloudRun your app service name 
+    _SERVICE_NAME     : test-app
+# Name artifacts repo your
+    _DOCKER_REGISTRY  : my-artifacts-repo
     _DOCKER_IMAGENAME : gcp-js-app
