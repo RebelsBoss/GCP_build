@@ -3,6 +3,8 @@ steps:
   - name: gcr.io/cloud-builders/docker
     id  : BUILD
     args: ['build', '-t', '$_SERVICE_IMAGE', '.', '-f', 'dockerfile']
+options:
+    logging: CLOUD_LOGGING_ONLY
     
 # Docker Push Image to Artifact Registry
   - name: gcr.io/cloud-builders/docker
