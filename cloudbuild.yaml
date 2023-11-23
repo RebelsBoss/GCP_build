@@ -3,8 +3,6 @@ steps:
   - name: gcr.io/cloud-builders/docker
     id  : BUILD
     args: ['build', '-t', '$_SERVICE_IMAGE', '.', '-f', 'dockerfile']
-options:
-    logging: CLOUD_LOGGING_ONLY
     
 # Docker Push Image to Artifact Registry
   - name: gcr.io/cloud-builders/docker
@@ -24,6 +22,8 @@ options:
       - --region=$_SERVICE_REGION
       - --image=$_SERVICE_IMAGE
 
+options:
+    logging: CLOUD_LOGGING_ONLY
 
 substitutions:
     _SERVICE_IMAGE    : europe-central2-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
