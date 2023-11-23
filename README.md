@@ -1,15 +1,20 @@
 ### **GCP-Demo.**
-Це приклад проекту на JavaScript для Google Cloud Platform. Він містить простий веб-сервер на Node.js і використовує Google Cloud Build для автоматичної збірки та розгортання додатку.
+Це приклад розгортання додатку на JavaScript для Google Cloud Platform. Використовує Google Cloud Build для автоматичної збірки та розгортання додатку.
 
-#### Dependencies.
- Проект використовує наступні залежності:
- - Node.js (v12 або вище)
- - Express.js
- - Docker
- - Google Cloud SDK
- - Google Cloud Build
- - Google Artifact Registry
- - Google Cloud Run 
+#### IAM permissions :
+###### 1. <your_id>@cloudbuild.gserviceaccount.com add :
+     - Artifact Registry Writer
+     - Cloud Build Service Account
+     - Cloud Run Admin or Cloud Run Developer
+     - Service Account User
+     - Cloud Build WorkerPool User
+###### 2. <your_id>@serverless-robot-prod.iam.gserviceaccount.com (Google Cloud Run Service Agent) add :
+     - Cloud Run Developer
+     - Cloud Run Service Agent
+###### 4. <your_artifacts_registry> add principal :
+     - <your_id>@cloudbuild.gserviceaccount.com  -- Artifact Registry Writer
+     - <your_id>@serverless-robot-prod.iam.gserviceaccount.com  -- Artifact Registry Reader
+     
 
 #### Для локального тестування
  1. Клонуйте репозиторій на свій локальний комп'ютер:
@@ -19,12 +24,7 @@
      - cd gcp-demo
 ```
 
- 3. Встановіть залежності:
-    
- ```
-     - docker install
-```
-
+ 3. Встановіть [docker](https://docs.docker.com/engine/install/ubuntu/)
  4. Для запуску додатку локально, виконайте наступні команди:
 
  ```
