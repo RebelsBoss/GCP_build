@@ -1,5 +1,5 @@
 ### **GCP-Demo.**
-Це приклад проекту на JavaScript для Google Cloud Platform. Він містить простий веб-сервер на Node.js і використовує Google Cloud Build для автоматичної збірки та розгортання додатку.
+ Це приклад проекту на JavaScript для Google Cloud Platform. Він містить простий веб-сервер на Node.js і використовує Google Cloud Build для автоматичної збірки та розгортання додатку.
 
 Dependencies.
  Проект використовує наступні залежності:
