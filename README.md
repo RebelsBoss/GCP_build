@@ -33,7 +33,7 @@ Start app.
      - docker run -d -p 9090:8080 [IMAGE TAG]
 ```
 
-Після цього ви можете відкрити свій додаток в браузері за адресою http://localhost:9090.
+Після цього ви можете відкрити свій додаток в браузері за (адресою)[http://localhost:9090].
 
 CI/CD.
  Continuous Integration.
