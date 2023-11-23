@@ -8,18 +8,30 @@ Dependencies.
  - Docker
  - Google Cloud SDK
  - Google Cloud Build
+ - Google Artifact Registry
+ - Google Cloud Run 
 
 Install.
  1. Клонуйте репозиторій на свій локальний комп'ютер:
+
+```
      - git clone https://gitlab.com/Rebelsboss/gcp-demo.git
      - cd gcp-demo
- 2. Встановіть залежності:
+```
+
+ 3. Встановіть залежності:
+    
+ ```
      - docker install
+```
 
 Start app.
  Для запуску додатку локально, виконайте наступні команди:
+
+ ```
   - docker build -t node:alpine -f dockerfile .
   - docker run -d -p 9090:8080 [IMAGE TAG]
+```
 
 Після цього ви можете відкрити свій додаток в браузері за адресою http://localhost:9090.
 
@@ -33,4 +45,6 @@ CI/CD.
  Google Cloud Platform.
 Цей проект використовує наступні сервіси Google Cloud Platform:
   - Google Cloud Build для автоматичної збірки додатку.
-  - Google Kubernetes Engine для розгортання.
+  - Google Cloud SDK
+  - Google Artifact Registry
+  - Google Cloud Run 
