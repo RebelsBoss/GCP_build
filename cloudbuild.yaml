@@ -10,6 +10,7 @@ steps:
     id  : PUSH
     entrypoint: 'sh'
     args: ['push', '$_SERVICE_IMAGE']    
+
     
 # Docker Deploy image to Cloud Run
   - name: gcr.io/cloud-builders/gcloud
