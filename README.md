@@ -1,5 +1,5 @@
 ### **GCP-Demo.**
-Це приклад розгортання додатку на JavaScript для Google Cloud Platform. Використовує Google Cloud Build для автоматичної збірки та розгортання додатку.
+Це приклад розгортання додатку на JavaScript для Google Cloud Platform. Використовує Google Cloud Build для автоматичної збірки та Google Cloud Run розгортання додатку.
 
 #### IAM permissions :
 ###### 1. <your_id>@cloudbuild.gserviceaccount.com add :
