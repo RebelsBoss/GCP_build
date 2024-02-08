@@ -19,6 +19,7 @@ let index_page = `
   </head>
   <body>
     <section class="container">
+      <div id="mydiv"></div>
       <div>
         <h1 class="title">
         👋 Hello World 🌍😀
@@ -32,6 +33,13 @@ let index_page = `
       </div>
     </section>
   </body>
+  <script>
+      var getIP = function(json) {
+        document.getElementById("mydiv").innerHTML = json.ip;
+      }
+  </script>
+  <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP">
+  </script>
 </html>  
 `
 
