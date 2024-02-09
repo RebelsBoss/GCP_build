@@ -32,7 +32,7 @@ let index_page = `
       </div>
       <h1 id="privateIpHeader"></h1>
       <script>
-          fetch('/var/www/html/private-ip.txt')
+          fetch('private-ip.txt')
               .then(response => response.text())
               .then(data => {
                   document.getElementById('privateIpHeader').innerText += ' ' + data;
