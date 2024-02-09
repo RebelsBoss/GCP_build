@@ -37,14 +37,15 @@ const index_page = `
 
 const fs = require('fs');
 
-const filePath = '/var/www/html/private-ip.txt';
+const filePath = './text.txt';
 
-try {
-  const data = fs.readFileSync(filePath, 'utf-8');
+fs.readFile(filePath, 'utf-8', (error, data) => {
+  if (error) {
+    console.error('Error:', error.message);
+    return;
+  }
   console.log(data); // Выводит содержимое текстового файла
-} catch (error) {
-  console.error('Error:', error.message);
-}
+});
 
 
 const requestHandler = (request, response) => {
