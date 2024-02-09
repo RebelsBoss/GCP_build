@@ -31,22 +31,14 @@ const index_page = `
         </h2>                
       </div>
     </section>
+    <script>
+      const ipAddress = window.location.hostname;
+      document.getElementById('ip').innerHTML = ipAddress;
+    </script>
+    <p id="ip"></p>
   </body>
 </html>  
 `;
-
-const fs = require('fs');
-
-const filePath = './text.txt';
-
-fs.readFile(filePath, 'utf-8', (error, data) => {
-  if (error) {
-    console.error('Error:', error.message);
-    return;
-  }
-  console.log(data); // Выводит содержимое текстового файла
-});
-
 
 const requestHandler = (request, response) => {
   console.log(request.url);
