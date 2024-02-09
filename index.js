@@ -1,5 +1,4 @@
 const http = require('http');
-const fs = require('fs');
 const port = 8080;
 
 const index_page = `
@@ -35,6 +34,18 @@ const index_page = `
   </body>
 </html>  
 `;
+
+const fs = require('fs');
+
+const filePath = '/var/www/html/private-ip.txt';
+
+try {
+  const data = fs.readFileSync(filePath, 'utf-8');
+  console.log(data); // Выводит содержимое текстового файла
+} catch (error) {
+  console.error('Error:', error.message);
+}
+
 
 const requestHandler = (request, response) => {
   console.log(request.url);
