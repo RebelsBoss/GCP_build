@@ -1,8 +1,8 @@
-const http = require('http')
+const http = require('http');
 const fs = require('fs');
-const port = 8080
+const port = 8080;
 
-let index_page = `
+const index_page = `
 <!doctype html>
 <html>
   <head>
@@ -31,31 +31,22 @@ let index_page = `
         DevOps top
         </h2>                
       </div>
-      <h1 id="privateIpHeader"></h1>
-      <script>
-          fetch('private-ip.txt')
-              .then(response => response.text())
-              .then(data => {
-                  document.getElementById('privateIpHeader').innerText += ' ' + data;
-              })
-              .catch(error => console.error('Error fetching private IP:', error));
-      </script>
     </section>
   </body>
 </html>  
-`
+`;
 
 const requestHandler = (request, response) => {
-  console.log(request.url)
-  response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-  response.end(index_page)
-}
+  console.log(request.url);
+  response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+  response.end(index_page);
+};
 
-const server = http.createServer(requestHandler)
+const server = http.createServer(requestHandler);
 
 server.listen(port, (err) => {
   if (err) {
-    return console.log('😡 something bad happened', err)
+    return console.log('😡 something bad happened', err);
   }
-  console.log(`🌍 server is listening on ${port}`)
-})
+  console.log(`🌍 server is listening on ${port}`);
+});
