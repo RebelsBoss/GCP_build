@@ -1,50 +1,41 @@
 const http = require('http');
-const port = 8080;
 const fs = require('fs');
-
+const port = 8080;
 
 const index_page = `
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hello World!</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        .container { min-height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
-        .title { font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; display: block; font-weight: 300; font-size: 100px; color: #35495e; letter-spacing: 1px; }
-        .subtitle { font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif; font-weight: 300; font-size: 42px; color: #526488; word-spacing: 5px; padding-bottom: 15px; }
-        .links { padding-top: 15px; }
-    </style>
-  </head>
-  <body>
-    <section class="container">
-      <div>
-        <h1 class="title">
-        👋 Hello World 🌍😀
-        </h1>            
-      </div>
-    </section>
-    <h1>Ваш IP-адрес:</h1>
-    <p id="ip-address"></p>
-    <script>
-      function displayPrivateIp() {
-        fs.readFile('/home/ubuntu/private-ip.txt', 'utf-8', (error, privateIp) => {
-          if (error) {
-            console.error('Ошибка чтения private-ip.txt:', error);
-            return;
-          }
-          document.getElementById('ip-address').textContent = privateIp;
-        });
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Content from private-ip.txt</title>
+  <style>
+    /* Add CSS styles as needed */
+  </style>
+</head>
+<body>
+  <h1>Content from private-ip.txt:</h1>
+  <p id="ip-address"></p>
+  <script>
+    async function displayPrivateIp() {
+      try {
+        // Ensure correct path to your file (update if necessary)
+        const response = await fetch('/var/www/html/private-ip.txt');
+        if (!response.ok) {
+          throw new Error('Error fetching private-ip.txt: ' + response.statusText);
+        }
+        const privateIp = await response.text();
+        document.getElementById('ip-address').textContent = privateIp;
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle errors gracefully, e.g., display a user-friendly message
       }
-      displayPrivateIp();
-    </script>
-  </body>
-</html>  
+    }
+    displayPrivateIp();
+  </script>
+</body>
+</html>
 `;
-
 
 const requestHandler = (request, response) => {
   console.log(request.url);
@@ -56,7 +47,8 @@ const server = http.createServer(requestHandler);
 
 server.listen(port, (err) => {
   if (err) {
-    return console.log('😡 something bad happened', err);
+    console.error('Error:', err);
+    return;
   }
-  console.log(`🌍 server is listening on ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
