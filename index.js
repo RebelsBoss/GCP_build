@@ -7,7 +7,6 @@ const index_page = `
 <!doctype html>
 <html>
   <head>
-    <title>Ваш IP-адрес</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Hello World!</title>
@@ -25,20 +24,14 @@ const index_page = `
       <div>
         <h1 class="title">
         👋 Hello World 🌍😀
-        </h1>
-        <h2 class="subtitle">
-        made with 💚 and 🍵
-        </h2>
-        <h2 class="subtitle">
-        DevOps top
-        </h2>                
+        </h1>            
       </div>
     </section>
     <h1>Ваш IP-адрес:</h1>
     <p id="ip-address"></p>
     <script>
       function displayPrivateIp() {
-        fs.readFile('/var/www/html/private-ip.txt', 'utf-8', (error, privateIp) => {
+        fs.readFile('/home/ubuntu/private-ip.txt', 'utf-8', (error, privateIp) => {
           if (error) {
             console.error('Ошибка чтения private-ip.txt:', error);
             return;
