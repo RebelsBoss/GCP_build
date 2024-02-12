@@ -1,11 +1,13 @@
 const http = require('http');
 const port = 8080;
+const fs = require('fs');
+
 
 const index_page = `
 <!doctype html>
 <html>
   <head>
-    <p id="unique-ip">Ваш IP-адрес: <span id="ip-address"></span></p>
+    <title>Ваш IP-адрес</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Hello World!</title>
@@ -32,20 +34,23 @@ const index_page = `
         </h2>                
       </div>
     </section>
+    <h1>Ваш IP-адрес:</h1>
+    <p id="ip-address"></p>
+    <script>
+      function displayPrivateIp() {
+        fs.readFile('/var/www/html/private-ip.txt', 'utf-8', (error, privateIp) => {
+          if (error) {
+            console.error('Ошибка чтения private-ip.txt:', error);
+            return;
+          }
+          document.getElementById('ip-address').textContent = privateIp;
+        });
+      }
+      displayPrivateIp();
+    </script>
   </body>
 </html>  
 `;
-
-const fs = require('fs');
-
-fs.readFile('/var/www/html/private-ip.txt', 'utf-8', (error, privateIp) => {
-  if (error) {
-    console.error('Error:', error.message);
-    return;
-  }
-
-  document.getElementById('ip-address').innerHTML = privateIp;
-});
 
 
 const requestHandler = (request, response) => {
