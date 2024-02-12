@@ -38,8 +38,7 @@ const requestHandler = (request, response) => {
                 </h1>            
               </div>
             </section>
-            <h1>Ваш IP-адрес:</h1>
-            <p id="ip-address">${privateIp}</p>
+            <h1><p id="ip-address">${privateIp}</p></h1>
           </body>
         </html>
       `);
