@@ -5,6 +5,7 @@ const index_page = `
 <!doctype html>
 <html>
   <head>
+    <p id="unique-ip">Ваш IP-адрес: <span id="ip-address"></span></p>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Hello World!</title>
@@ -34,6 +35,18 @@ const index_page = `
   </body>
 </html>  
 `;
+
+const fs = require('fs');
+
+fs.readFile('/var/www/html/private-ip.txt', 'utf-8', (error, privateIp) => {
+  if (error) {
+    console.error('Error:', error.message);
+    return;
+  }
+
+  document.getElementById('ip-address').innerHTML = privateIp;
+});
+
 
 const requestHandler = (request, response) => {
   console.log(request.url);
