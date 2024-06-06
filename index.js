@@ -6,13 +6,6 @@ const requestHandler = (request, response) => {
   console.log(request.url);
   
   if (request.url === '/') {
-    fs.readFile('/home/ubuntu/private-ip.txt', 'utf-8', (error, privateIp) => {
-      if (error) {
-        console.error('Ошибка чтения private-ip.txt:', error);
-        response.writeHead(500, {'Content-Type': 'text/plain'});
-        response.end('Internal Server Error');
-        return;
-      }
       response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
       response.end(`
         <!doctype html>
@@ -38,7 +31,6 @@ const requestHandler = (request, response) => {
                 </h1>            
               </div>
             </section>
-            <h1><p id="ip-address">${privateIp}</p></h1>
           </body>
         </html>
       `);
