@@ -38,9 +38,9 @@ substitutions:
     _SERVICE_IMAGE    : europe-central2-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
     _SERVICE_REGION   : europe-central2
 # ID your project 
-    _SERVICE_PROJECT  : andrii-project-392608
+    _SERVICE_PROJECT  : <your-project-id>
 # Name CloudRun your app service name 
-    _SERVICE_NAME     : my-serv
+    _SERVICE_NAME     : <name-your-service-cloud-run>
 # Name artifacts repo your
-    _DOCKER_REGISTRY  : my-repo
-    _DOCKER_IMAGENAME : my-image
+    _DOCKER_REGISTRY  : <name-your-artifact-repo>
+    _DOCKER_IMAGENAME : <your-name-app>
